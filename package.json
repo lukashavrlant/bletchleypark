@@ -4,7 +4,8 @@
   "description": "historical ciphers",
   "main": "index.js",
   "scripts": {
-    "test": "npm run build && mocha",
+    "test": "npm run build && mocha && npm run lint",
+    "lint": "tslint './**/*.ts' -e './**/node_modules/**' -e './**/dist/**' --project ./tsconfig.json",
     "build": "tsc"
   },
   "author": "lukashavrlant",
