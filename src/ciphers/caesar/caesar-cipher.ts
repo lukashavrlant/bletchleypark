@@ -6,45 +6,39 @@ export class CaesarCipher {
     }
 
     public encrypt(openText: string, key: string): string {
-        const shift = this.getDistance(this.alphabet, key);
+        const distance = this.getDistance(this.alphabet, key);
         let cipherText = '';
 
         for (const letter of openText) {
-            const indexInAlphabet = this.findLetterInAlphabet(letter);
-            if (indexInAlphabet !== -1) {
-                cipherText += this.shiftLetterToRight(indexInAlphabet, shift);
-            } else {
-                cipherText += letter;
-            }
+            cipherText += this.shiftLetter(letter, distance);
         }
 
         return cipherText;
     }
-    
+
     public decrypt(cipherText: string, key: string): string {
         const distance = this.getDistance(this.alphabet, key);
         let openText = '';
 
         for (const letter of cipherText) {
-            const indexInAlphabet = this.findLetterInAlphabet(letter);
-            if (indexInAlphabet !== -1) {
-                openText += this.shiftLetterToLeft(indexInAlphabet, distance);
-            } else {
-                openText += letter;
-            }
+            openText += this.shiftLetter(letter, -distance);
         }
 
         return openText;
     }
 
-    private shiftLetterToLeft(indexInAlphabet: number, shift: number): string {
-        const cipherIndex = (indexInAlphabet - shift) + this.alphabet.length;
-        const normalizedCipherIndex = cipherIndex % this.alphabet.length;
-        return this.alphabet[normalizedCipherIndex];
+    private shiftLetter(letter: string, shift: number): string {
+        const indexInAlphabet = this.findLetterInAlphabet(letter);
+
+        if (indexInAlphabet !== -1) {
+            return this.shiftLetterToRight(indexInAlphabet, shift);
+        } else {
+            return letter;
+        }
     }
 
     private shiftLetterToRight(indexInAlphabet: number, shift: number): string {
-        const cipherIndex = (indexInAlphabet + shift);
+        const cipherIndex = (indexInAlphabet + shift) + this.alphabet.length;
         const normalizedCipherIndex = cipherIndex % this.alphabet.length;
         return this.alphabet[normalizedCipherIndex];
     }
