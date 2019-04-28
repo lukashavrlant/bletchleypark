@@ -7,24 +7,22 @@ export class CaesarCipher {
 
     public encrypt(openText: string, key: string): string {
         const distance = this.getDistance(this.alphabet, key);
-        let cipherText = '';
-
-        for (const letter of openText) {
-            cipherText += this.shiftLetter(letter, distance);
-        }
-
-        return cipherText;
+        return this.shiftLetters(openText, distance);
     }
 
     public decrypt(cipherText: string, key: string): string {
         const distance = this.getDistance(this.alphabet, key);
-        let openText = '';
+        return this.shiftLetters(cipherText, -distance);
+    }
 
-        for (const letter of cipherText) {
-            openText += this.shiftLetter(letter, -distance);
+    private shiftLetters(text: string, shift: number): string {
+        let shiftedText = '';
+
+        for (const letter of text) {
+            shiftedText += this.shiftLetter(letter, shift);
         }
 
-        return openText;
+        return shiftedText;
     }
 
     private shiftLetter(letter: string, shift: number): string {
