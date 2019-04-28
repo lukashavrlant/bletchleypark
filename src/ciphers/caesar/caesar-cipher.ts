@@ -20,6 +20,7 @@ export class CaesarCipher {
 
         return cipherText;
     }
+    
     public decrypt(cipherText: string, key: string): string {
         const distance = this.getDistance(this.alphabet, key);
         let openText = '';
