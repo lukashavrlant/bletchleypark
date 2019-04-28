@@ -8,7 +8,7 @@
         "test": "npm run build && mocha && npm run lint",
         "lint": "tslint './**/*.ts' -e './**/node_modules/**' -e './**/dist/**' --project ./tsconfig.json",
         "build": "tsc",
-        "prepublish": "npm run build"
+        "prepublish": "npm run test && npm run build"
     },
     "author": "lukashavrlant",
     "license": "ISC",
