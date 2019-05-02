@@ -1,4 +1,4 @@
-const englishAlphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+import {englishAlphabet} from "../../tools/constants";
 
 export class CaesarCipher {
     public constructor(private alphabet: ReadonlyArray<string> = englishAlphabet) {
