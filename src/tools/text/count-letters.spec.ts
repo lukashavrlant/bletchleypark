@@ -1,7 +1,7 @@
 import {expect} from 'chai';
-import {countLetters} from "./letter-counter";
-import {englishAlphabet} from "../constants";
+import {countLetters} from "./count-letters";
 import {Letter} from "./interfaces";
+import {fillWithZeros} from "./util";
 
 describe('when counting letters', () => {
     describe('in empty string', () => {
@@ -25,17 +25,5 @@ describe('when counting letters', () => {
                 expect(countLetters(inputText), `expected to correctly count letter in ${inputText}`).to.be.deep.equal(fillWithZeros(counter));
             }
         }
-    }
-
-    function fillWithZeros(object: Record<Letter, number>): Record<Letter, number> {
-        const newObject = {...object};
-
-        englishAlphabet.forEach((letter) => {
-            if (!newObject[letter]) {
-                newObject[letter] = 0;
-            }
-        });
-
-        return newObject;
     }
 });
