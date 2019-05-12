@@ -7,7 +7,7 @@ import {letterFrequency} from "./letter-frequency";
 export interface CaesarBruteForceAttackResult {
     openText: string;
     key: string;
-    probability: number;
+    deviation: number;
 }
 
 export type CaesarBruteForceAttackResults = ReadonlyArray<CaesarBruteForceAttackResult>;
@@ -23,14 +23,14 @@ export class CaesarBruteForceAttack {
     private evaluateKey(cipherText: string, key: string): CaesarBruteForceAttackResult {
         const openText = this.caesarCipher.decrypt(cipherText, key);
         const distribution = letterDistribution(openText);
-        const probability = 1 - this.distributionDistance.getDistance(distribution, letterFrequency.en);
+        const deviation = this.distributionDistance.getDistance(distribution, letterFrequency.en);
 
         return {
-            openText, key, probability
+            openText, key, deviation
         };
     }
 
     private byHighestProbability(a: CaesarBruteForceAttackResult, b: CaesarBruteForceAttackResult): number {
-        return b.probability - a.probability;
+        return a.deviation - b.deviation;
     }
 }
