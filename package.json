@@ -1,6 +1,6 @@
 {
     "name": "bletchleypark",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "historical ciphers",
     "main": "./dist/src/index.js",
     "types": "dist/src/index.d.ts",
@@ -13,7 +13,7 @@
     "author": "lukashavrlant",
     "license": "ISC",
     "devDependencies": {
-        "mocha": "6.1.4",
+        "mocha": "^6.2.2",
         "typescript": "3.4.5",
         "tslint": "5.16.0",
         "chai": "4.2.0",
