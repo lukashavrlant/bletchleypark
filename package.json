@@ -13,7 +13,7 @@
     "author": "lukashavrlant",
     "license": "ISC",
     "devDependencies": {
-        "mocha": "^6.2.2",
+        "mocha": "^10.2.0",
         "typescript": "3.4.5",
         "tslint": "5.16.0",
         "chai": "4.2.0",
